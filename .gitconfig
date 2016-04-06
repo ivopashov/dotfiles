@@ -1,0 +1,21 @@
+[rerere]
+	enabled = true
+[user]
+	name = ivoPashov
+	email = ivo.pashoff@gmail.com
+[core]
+	excludesfile = /Users/ivopashov/.gitignore_global
+	editor = nano
+[difftool "sourcetree"]
+	cmd = " "
+	path = 
+[mergetool "sourcetree"]
+	cmd = " "
+	trustExitCode = true
+[alias]
+	fpush = push --force-with-lease
+	co = checkout
+	vis = log --oneline --graph --decorate --all
+	last = log -1 HEAD
+    bl = branch -l
+    rd = push origin --delete
