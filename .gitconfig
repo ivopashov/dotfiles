@@ -19,3 +19,4 @@
 	last = log -1 HEAD
     bl = branch -l
     rd = push origin --delete
+    blame = log --pretty=format:"%h - %an, %ai %s" --date-order --follow
