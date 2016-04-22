@@ -13,10 +13,15 @@
 	cmd = " "
 	trustExitCode = true
 [alias]
-	fpush = push --force-with-lease
-	co = checkout
-	vis = log --oneline --graph --decorate --all
-	last = log -1 HEAD
-    bl = branch -l
-    rd = push origin --delete
-    blame = log --pretty=format:"%h - %an, %ai %s" --date-order --follow
+    	fpush = push --force-with-lease
+    	co = checkout
+    	vis = log --oneline --graph --decorate --all
+    	vis-oneline = git log --pretty=oneline
+    	last = log -1 HEAD
+    	bl = branch -l
+    	rd = push origin --delete
+    	blame = log --pretty=format:"%h - %an, %ai %s" --date-order --follow
+    	rom = rebase origin/master
+    	f = fetch
+    	resetmerge = reset --merge
+    	resetcommit = reset --soft HEAD~
