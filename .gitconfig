@@ -1,27 +1,48 @@
 [rerere]
 	enabled = true
 [user]
-	name = ivoPashov
+	name = Ivaylo Pashov
 	email = ivo.pashoff@gmail.com
 [core]
 	excludesfile = /Users/ivopashov/.gitignore_global
-	editor = nano
+	editor = /usr/bin/env vim
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [difftool "sourcetree"]
 	cmd = " "
 	path = 
 [mergetool "sourcetree"]
 	cmd = " "
 	trustExitCode = true
+[color "log"]
+        author = green bold
 [alias]
-    	fpush = push --force-with-lease
-    	co = checkout
-    	vis = log --oneline --graph --decorate --all
-    	vis-oneline = git log --pretty=oneline
-    	last = log -1 HEAD
-    	bl = branch -l
-    	rd = push origin --delete
-    	blame = log --pretty=format:"%h - %an, %ai %s" --date-order --follow
-    	rom = rebase origin/master
-    	f = fetch
-    	resetmerge = reset --merge
-    	resetcommit = reset --soft HEAD~
+        branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes        
+        fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET ${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f"
+	fpush = push --force-with-lease
+	co = checkout
+        cp = cherry-pick
+	vis = log --oneline --graph --decorate --all
+        visb = "log --pretty=format:'%<(60,trunc)%s %>(10) %h %>(30)%aI %>(20)%an' --graph"
+	vis-oneline = log --pretty=oneline
+	last = log -1 HEAD
+        bl = branch -l
+        rom = rebase origin/master
+        f = fetch
+	resetmerge = reset --merge
+	resetcommit = reset --soft HEAD~
+        st = status
+        graph = log --graph --abbrev-commit --decorate --date=relative --full-history --format=format:'%C(bold blue)%h%C(reset) %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold blue)%an%C(reset)%C(bold yellow)%d%C(reset)'
+	pom = pull origin master
+	timesheet = !git log --reverse --date=short --pretty=format:\"%ad - %s%d\" --date=short --date-order --author=\"$(git config user.name)\" --branches --since=\"1 week ago\"
+[fetch]
+	prune = true
+[merge]
+	tool = extMerge
+[mergetool "extMerge"]
+	cmd = extMerge \\\"$BASE\\\" \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$MERGED\\\"
+	trustExitCode = false
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
