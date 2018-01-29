@@ -2,29 +2,17 @@ eval "$(rbenv init -)"
 eval "$(pyenv init -)"
 alias gem-open='BUNDLER_EDITOR=code bundle open'
 alias ..='cd ..'
-alias ....='cd ../../'
-alias .3='cd ../../../'
-alias .4='cd ../../../../'
 alias ll='ls -la'
 alias l.='ls -d .* --color=auto'
 alias g='git'
 alias cb="g bl | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'"
 alias be='bundle exec'
-alias cas='ssh ivopashov@10.4.3.155'
-alias cap1='ssh ivopashov@10.20.11.159'
-alias cap2='ssh ivopashov@10.20.1.43'
-alias cras='ssh ivopashov@10.4.1.88'
-alias cms='ssh ivopashov@web2-staging.rbank-int.com'
 alias hook='./git-hooks/hm --install'
 alias unhook='./git-hooks/hm --uninstall'
-alias jump='ssh ivopashov@jump.rbank-int.com'
-alias cadevdb='psql -d auto_categorization_development'
 alias stagingreset='git fetch && git checkout staging && git reset --hard origin/staging'
 alias masterreset='git fetch && git checkout master  && git reset --hard origin/master'
 alias fpushstaging='git push origin +master:staging && g co staging && g reset --hard origin/staging'
 alias bi='bundle install --path .bundle'
-alias repos='cd /Volumes/Data/Repos'
-alias rbaservicesrestart='brew services restart rabbitmq && brew services restart redis && brew services restart postgresql'
 # Git branch in prompt.
 
 parse_git_branch() {
