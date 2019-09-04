@@ -6,13 +6,6 @@
 [core]
   excludesfile = /Users/ivopashov/.gitignore_global
   editor = /usr/bin/env vim
-  pager = diff-so-fancy | less --tabs=4 -RFX
-[difftool "sourcetree"]
-  cmd = " "
-  path =
-[mergetool "sourcetree"]
-  cmd = " "
-  trustExitCode = true
 [color "log"]
   author = green bold
 [alias]
@@ -33,7 +26,6 @@
   st = status
   graph = log --graph --abbrev-commit --decorate --date=relative --full-history --format=format:'%C(bold blue)%h%C(reset) %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold blue)%an%C(reset)%C(bold yellow)%d%C(reset)'
   pom = pull origin master
-  timesheet = !git log --reverse --date=short --pretty=format:\"%ad - %s%d\" --date=short --date-order --author=\"$(git config user.name)\" --branches --since=\"1 week ago\"
 [fetch]
   prune = true
 [merge]
