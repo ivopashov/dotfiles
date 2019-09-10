@@ -1,12 +1,6 @@
-alias ..='cd ..'
-alias ll='ls -la'
 alias g='git'
+alias cb="g bl | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'"
 
-parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
-
-export PS1="\W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
 export EDITOR='vim'
 
 function fb() {
@@ -24,13 +18,3 @@ function fd() {
                   -o -type d -print 2> /dev/null | fzf +m) &&
   cd "$dir"
 }
-
-function db() {
-    git branch -d "$1"
-    git push origin :"$1"
-}
-
-function shas() {
-  g rev-list HEAD --max-count=$1 | tr "\n" " " | pbcopy
-}
-
